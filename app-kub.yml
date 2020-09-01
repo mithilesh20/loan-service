@@ -1,0 +1,31 @@
+
+apiVersion: apps/v1
+kind: Deployment
+apiVersion : apps/v1beta1
+kind: Deployment
+metadata:
+  name: loanservice 
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: loanservice
+    spec:
+      containers:
+        - name: loanservice 
+          image: docker.io/chenjigaramnaveen/loansservice
+          ports:
+          - containerPort: 1994
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+    name: loanservice
+spec:
+    type: LoadBalancer
+    ports:
+    - port: 1994
+    selector:
+        app: loanservice
