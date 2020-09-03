@@ -17,6 +17,9 @@ spec:
           image: docker.io/chenjigaramnaveen/loansservice
           ports:
           - containerPort: 1994
+  selector:
+    matchLabels:
+      app: loanservice
 ---
 
 apiVersion: v1
